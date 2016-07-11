@@ -1,4 +1,7 @@
 # your code goes here
+from sys import argv
+#can also do import sys
+
 def display_restaurant_ratings(filename):
     """Displays restaurant name and rating for a group of restaurants.
 
@@ -21,4 +24,5 @@ def display_restaurant_ratings(filename):
             print "{} is rated at {}".format(restaurant_name, restaurant_rating)
             #prints a string with name and rating
 
-display_restaurant_ratings('scores.txt')
+display_restaurant_ratings(argv[1])
+#if import sys: (sys.argv[1])
