@@ -19,10 +19,21 @@ def display_restaurant_ratings(filename):
                                                                     restaurant_rating)
             #if restaurant_name not already in dictionary, puts it in with restaurant_rating as default value
 
-        for restaurant_name, restaurant_rating in rest_and_ratings.items():
+        for restaurant_name, restaurant_rating in sorted(rest_and_ratings.items()):
             #for name and rating in the dictionary's items
             print "{} is rated at {}".format(restaurant_name, restaurant_rating)
             #prints a string with name and rating
+
+        user_restaurant = raw_input("What is your favorite restaurant? ")
+        user_rating = int(raw_input("What would you rate the restaurant on a scale of 1-5? "))
+
+        if user_restaurant in rest_and_ratings:
+            rest_and_ratings[user_restaurant] = ((user_rating + rest_and_ratings[user_restaurant]) / 2)
+        else:
+            rest_and_ratings[user_restaurant] = rest_and_ratings.get(user_restaurant, user_rating)
+
+        for restaurant_name, restaurant_rating in sorted(rest_and_ratings.items()):
+            print "{} is rated at {}".format(restaurant_name, restaurant_rating)
 
 display_restaurant_ratings(argv[1])
 #if import sys: (sys.argv[1])
